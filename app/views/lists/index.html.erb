@@ -1,0 +1,48 @@
+
+<% @lists.each do |list| %>
+  <div class="list-header">
+    <%= image_tag("note.png", class: "note-img") %>
+
+    <div class="list">
+      <%= list.title %>
+      <%= list.descriotion %>
+    </div>
+
+    <div class="edit-list">
+      <%= link_to "#{image_tag("edit_img.png", class: "link-list")}".html_safe, edit_list_path(list) %>
+
+      <div class="line"></div>
+      <%= link_to "#{image_tag("delete_img.png", class: "link-list")}".html_safe, list, method: :delete %>
+    </div>
+  
+  </div>
+  <%= form_for(:task, url: tasks_path, html: { class: "add-task"}) do |f| %>
+    <%= image_tag("Green.png", class: "greenplus")%>
+    <%= f.text_field :content, placeholder: "Start typing here to create a task..." %>
+    <%= f.hidden_field :list_id , value: list.id%>
+    <%= f.submit "Add Task" %>
+  <% end %>
+
+  <ul id="list<%=list.id%>" class="task-list">
+    <% list.tasks.each do |task| %>
+    <li class="task" id="task_<%= task.id %>" >
+      <%= check_box_tag task.id, task.id, task.completed_at, class: "task-check" %>
+  
+      <label for=<%=task.id %> ></label>
+        <p><%= task.content %></p>
+      
+      <div class="control-task">
+        <span class="glyphicon glyphicon-move sort-icon"></span>
+      
+        <div class="linetwo"></div>
+        <%= link_to "#{image_tag("task_edit_img.png", class: "edit-task")}".html_safe, edit_task_path(task) %>
+      
+        <div class="linetwo"></div>
+        <%= link_to "#{image_tag("task_delete_img.png", class: "delete-task")}".html_safe, task, method: :delete %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to "#{image_tag("blue+.png")}" 'Add TODO List'.html_safe, new_list_path, class: "add-button" %>

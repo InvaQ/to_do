@@ -1,0 +1,22 @@
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation"  class="alert alert-danger">
+      <p class=""><%= pluralize(@task.errors.count, "error") %> prohibited this list from being saved:</p>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :content, class: "form-control", placeholder: "Enter task content..." %>
+  </div>
+
+  <div class="actions pull-right">
+    <%= link_to 'Close', root_path , class: "btn btn-default" %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
