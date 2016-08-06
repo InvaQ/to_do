@@ -14,3 +14,36 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery-ui
+//= require jquery.turbolinks
+
+$(document).ready(function() {
+
+  $(".container-app").on("mouseover", ".task", function() {
+      $(this).children(".control-task").css("display", "inline-block");
+    }).on("mouseout", ".task", function() {
+      $(this).children(".control-task").css("display", "none");
+    });
+
+  $(".container-app").on("mouseover", ".list-header", function() {
+      $(this).children(".edit-list").css("display", "inline-block");
+    }).on("mouseout", ".list-header", function() {
+      $(this).children(".edit-list").css("display", "none");
+    });
+
+  $('.task-list').sortable({
+    axis: 'y',
+    update: function(){
+      $.post('tasks/change_priority', $(this).sortable('serialize'));
+    }
+  });
+
+  $(".task-check").on('click', function(){
+      $.ajax({
+        url: '/tasks/'+this.value+'/mark',
+        type: 'POST',
+        data: {"mark": this.checked}
+      });
+  });
+
+});

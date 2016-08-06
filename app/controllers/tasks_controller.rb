@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-
+  before_action :set_task, except: [:create, :change_priority]
   def new
     @task = Task.new
   end
@@ -20,7 +20,13 @@ class TasksController < ApplicationController
     end
   end
   def update
-
+    respond_to do |format|
+      if @task.update(task_params)
+        format.html { redirect_to roo_path}
+      else
+        format.html { render action: 'edit'}
+      end
+    end
   end
 
   def destroy
@@ -30,18 +36,19 @@ class TasksController < ApplicationController
     end
   end
 
-  def change_priority
-    params[:task].each_with_index do |id, i|
-      Task.update_all({priority: i+1}, {id: id})
-    end
-    render head :ok
-  end
-
   def complete
     @task.update_attribute(:completed_at, Time.now)
     redirect_to root_path, notice: "Task completed"
   end
 
+  def change_priority
+   # byebug
+    Task.all.each_with_index do |task, i|
+      task.update(priority: params[:task][i].to_i)
+    end
+
+    render nothing: true
+  end
 
   private
 

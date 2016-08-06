@@ -8,12 +8,16 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
   end
-  def edit
-
-  end
+  
 
   def update
-
+    respond_to do |format|
+      if @list.update(list_params)
+        format.html {redirect_to root_path}
+      else
+        format.html {render action: 'edit' }
+      end
+    end
   end
 
   def create
@@ -37,13 +41,6 @@ class ListsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
-
-
-
-
-
 
   private
 
