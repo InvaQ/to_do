@@ -43,9 +43,12 @@ class TasksController < ApplicationController
 
   def change_priority
    # byebug
-    Task.all.each_with_index do |task, i|
-      task.update(priority: params[:task][i].to_i)
+   params[:task].each_with_index do |id, index|
+      Task.where(id: id).update_all(priority: index+1)
     end
+    #Task.all.each_with_index do |task, i|
+     # task.update(priority: params[:task][i].to_i)
+    #end
 
     render nothing: true
   end

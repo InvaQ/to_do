@@ -12,10 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require_tree .
 //= require jquery-ui
-//= require jquery.turbolinks
+
+
 
 $(document).ready(function() {
 

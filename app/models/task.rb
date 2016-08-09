@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   validates :content, presence: true, length: { maximum: 60 }
   default_scope { order('priority ASC')}
 
-  after_save :set_default_priority
+ # after_save :set_default_priority
 
   def completed?
     !completed_at.blank?
@@ -11,8 +11,8 @@ class Task < ApplicationRecord
 
   private
 
-  def set_default_priority
-    write_attribute(:priority, self.id)
-  end
+ # def set_default_priority
+ #  write_attribute(:priority, self.id)
+ # end
 
 end
