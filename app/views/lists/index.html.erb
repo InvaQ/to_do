@@ -1,4 +1,4 @@
-
+<% provide(:title, current_user.email) %>
 <% @lists.each do |list| %>
   <div class="list-header">
     <%= image_tag("note.png", class: "note-img") %>

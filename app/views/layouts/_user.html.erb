@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+	<div class="view-user">	
+	<%= current_user.email %>
+	<%= link_to "Edit profile", edit_user_registration_path %>
+	<%= link_to "log out", destroy_user_session_path, method: :delete %>
+	</div>
+<%end%>

@@ -8,10 +8,19 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-  <div class="container-app">
-  	 <%= yield %>
+  <body>  
+    <div class="container-app">
+      <%= render 'layouts/user' %>
+      <h1 class="logo">Sample todo list</h1>
+      <% map = { notice: 'success', alert: 'danger'}.with_indifferent_access %>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= map[key] %>"><%= value %></div>
+      <% end %>
+      
+      <%= yield %>
+    </div>
+    <div class="footer">
+  <a href="http://rubygarage.org/" >@Ruby Garage</a>
   </div>
-   
   </body>
 </html>

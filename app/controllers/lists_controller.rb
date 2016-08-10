@@ -1,12 +1,14 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
-  
+  before_filter :authenticate_user!
+
   def new
     @list = List.new
   end
 
   def index
-    @lists = List.all
+    @user = current_user
+    @lists = @user.lists
   end
   
 
@@ -22,7 +24,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-
+    @list.user_id = current_user.id
     respond_to do |format|
       if @list.save
         format.html { redirect_to root_path, notice: 'Todo list was successfully created.' }
