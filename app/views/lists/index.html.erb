@@ -24,25 +24,71 @@
   <% end %>
 
   <ul id="list<%=list.id%>" class="task-list">
+  
     <% list.tasks.each do |task| %>
+    <% if task.completed? %>
     <li class="task" id="task_<%= task.id %>" >
-      <%= check_box_tag task.id, task.id, task.completed_at, class: "task-check" %>
+      <div class="complete">
+      
+        <i style="color: #006400;" class="glyphicon glyphicon-ok"></i>
+      
+    </div>
+  
+      <label for=<%=task.id %> ></label>
+        <p style="opacity: 0.5;"><strike><%= task.content %></strike></p>
+      
+      <div class="control-task">
+      <div class="task_priority">
+      
+        <span class="glyphicon glyphicon-sort"></span>
+        </div> 
+        <div class="linetwo"></div>
+        <div class="task_edit">      
+        <%= link_to edit_task_path(task) do %>
+         <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+          </div>  
+        <div class="linetwo"></div>
+        <div class="trash">
+        <%= link_to task, method: :delete do %>
+         <i class="glyphicon glyphicon-trash"></i>
+          <% end %>
+          </div>
+      </div>
+    </li>
+  <% else %>
+    <li class="task" id="task_<%= task.id %>" >
+      <div class="complete">
+      <%= link_to complete_task_path(task), method: :patch do %>
+        <i class="glyphicon glyphicon-ok"></i>
+      <% end %>
+    </div>
   
       <label for=<%=task.id %> ></label>
         <p><%= task.content %></p>
       
       <div class="control-task">
-        <span class="glyphicon glyphicon-move sort-icon"></span>
+      <div class="task_priority">
       
+        <span class="glyphicon glyphicon-sort"></span>
+        </div> 
         <div class="linetwo"></div>
-        <%= link_to "#{image_tag("task_edit_img.png", class: "edit-task")}".html_safe, edit_task_path(task) %>
-      
+        <div class="task_edit">      
+        <%= link_to edit_task_path(task) do %>
+         <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+          </div>  
         <div class="linetwo"></div>
-        <%= link_to "#{image_tag("task_delete_img.png", class: "delete-task")}".html_safe, task, method: :delete %>
+        <div class="trash">
+        <%= link_to task, method: :delete do %>
+         <i class="glyphicon glyphicon-trash"></i>
+          <% end %>
+          </div>
       </div>
     </li>
     <% end %>
+  <% end %>
   </ul>
 <% end %>
 
-<%= link_to "#{image_tag("blue+.png")}" 'Add TODO List'.html_safe, new_list_path, class: "add-button" %>
+<%= link_to "#{image_tag("blue.png")}" 'Add TODO List'.html_safe, new_list_path, class: "add-button" %>

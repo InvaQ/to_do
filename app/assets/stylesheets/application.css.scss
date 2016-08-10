@@ -13,12 +13,13 @@
  *= require_tree .
  *= require_self
  */
-
-@import "bootstrap";
 @import "bootstrap-sprockets";
-@import "lists";
+@import "bootstrap";
 
-
+$done: #00FF00;
+$destroy: #B22222;
+$common: #999;
+$edit: #337ab7;
 
 .view-user {
   font-size: 15px;
@@ -39,7 +40,7 @@
 
 /* Task */
 
-input[type="checkbox"] {
+/*input[type="checkbox"] {
   display:none;
 }
 
@@ -56,8 +57,23 @@ input[type="checkbox"] + label::before {
 
 input[type="checkbox"]:checked + label::before {
   background: image_url('checkbox.png') no-repeat;
-}
+}*/
 
+.complete {
+  position: absolute;
+  top: 50%;
+  width:14px;
+  height:15px;
+  margin: -9px 13px 0 13px;
+  cursor: pointer;
+  i {
+      color: $common;
+      transition: all .4s ease-in-out;
+      &:hover {
+        color: $done;
+      }
+    }
+}
 
 .sort-icon {
   display: inline-block;
@@ -77,9 +93,11 @@ input[type="checkbox"]:checked + label::before {
 .control-task{
   position: absolute;
   top: 50%;
-  right: 0px;
+  right: 5px;
+  width: 16%;
   margin-top: -24px;
   display: none;
+  padding: 1em 0;
 }
 
 .task:hover {
@@ -208,6 +226,7 @@ li.task {
 .edit-list {
   display: none;
   vertical-align: middle;
+
 }
 
 .list-header {
@@ -241,7 +260,52 @@ li.task {
   border-right: 1px solid #999;
   height: 12px;
   margin: 0;
+  i{
+        color: $common;
+        transition: all .4s ease-in-out;
+        &:hover {
+          color: $destroy;
+        }
+      }
 }
+.task_priority{
+  vertical-align: middle;
+  display: inline-block;
+  border-left: 5px;
+  width: 20%;
+  padding: 0px 20px 0px 10px;
+}
+.task_edit {
+  vertical-align: middle;
+  display: inline-block;
+  
+  width: 20%;
+  i{
+        color: $common;
+        transition: all .4s ease-in-out;
+        &:hover {
+          color: $edit;
+        }
+    }
+  
+}
+.trash {
+  vertical-align: middle;
+  display: inline-block;
+  
+  width: 20%;
+  padding: 0px 20px 0px 10px;
+
+  
+  i{
+        color: $common;
+        transition: all .4s ease-in-out;
+        &:hover {
+          color: $destroy;
+        }
+    }
+}
+
 
 .link-list {
   padding: 15px 10px;
@@ -295,7 +359,7 @@ li.task {
 
 html, body {
   background: #cc8810;
-  background: linear-gradient(to bottom, #d9d4c2 0%,#d9d4c2 25%,#cc8810 75%,#cc8810) no-repeat center center fixed;
+  background: linear-gradient(to top, #b77a0e 0, #cc8810 25%, #dda931 45%, #dcd8c8 60%, #e0dcce) no-repeat center center fixed;
   background-size: cover;
   font-family: Arial, sans-serif;
 }
@@ -309,5 +373,12 @@ body {
 .container-app {
   
   width: 700px;
+  margin: 25px auto 0;
+}
+.authentication {
+
+  position: absolute;
+  right: 400px;
+  top: 200px;  
   margin: 25px auto 0;
 }
