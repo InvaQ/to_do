@@ -11,7 +11,7 @@
   <body>  
     <div class="container-app">
       <%= render 'layouts/user' %>
-      <h1 class="logo">Sample todo list</h1>
+      <h1 class="app_title">Sample todo list</h1>
       <% map = { notice: 'success', alert: 'danger'}.with_indifferent_access %>
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= map[key] %>"><%= value %></div>

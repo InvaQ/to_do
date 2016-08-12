@@ -15,7 +15,7 @@
 
 //= require_tree .
 //= require jquery-ui
-
+ 
 
 
 $(document).ready(function() {
@@ -39,11 +39,12 @@ $(document).ready(function() {
     }
   });
 
-  $(".task-check").on('click', function(){
+  $(".trash").on('click', function(){
       $.ajax({
-        url: '/tasks/'+this.value+'/mark',
+        url: '/tasks/'+this.value,
+        dataType: "json",
         type: 'POST',
-        data: {"mark": this.checked}
+        data: {"_method": this.delete}
       });
   });
 

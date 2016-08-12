@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to roo_path}
+        format.html { redirect_to root_path}
       else
         format.html { render action: 'edit'}
       end
@@ -33,6 +33,7 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to root_path }
+      format.json { head :no_content }
     end
   end
 
@@ -64,6 +65,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:content, :completed_at, :priority, :list_id)
+    params.require(:task).permit(:content, :completed_at, :priority, :list_id, :deadline)
   end
 end

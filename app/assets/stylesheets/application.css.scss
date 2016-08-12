@@ -21,6 +21,47 @@ $destroy: #B22222;
 $common: #999;
 $edit: #337ab7;
 
+
+
+
+/* application */
+
+html, body {
+  background: #cc8810;
+  background: linear-gradient(to top, #b77a0e 0, #cc8810 25%, #dda931 45%, #dcd8c8 60%, #e0dcce) no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 66px;
+}
+
+.app_title {
+  padding: 0;
+  font-size: 29px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  text-transform: uppercase;
+}
+.container-app {
+  
+  width: 700px;
+  margin: 25px auto 0;
+}
+.authentication {
+
+  position: absolute;
+  right: 400px;
+  top: 200px;  
+  margin: 25px auto 0;
+}
+
 .view-user {
   font-size: 15px;
   color: #333;
@@ -38,26 +79,8 @@ $edit: #337ab7;
   color: #a94442;
 }
 
-/* Task */
+/* tasks */
 
-/*input[type="checkbox"] {
-  display:none;
-}
-
-input[type="checkbox"] + label::before {
-  position: absolute;
-  top: 50%;
-  width:14px;
-  height:15px;
-  margin: -9px 13px 0 13px;
-  background: image_url('checkbox.png') 0 -16px no-repeat;
-  content:"";
-  cursor: pointer;
-}
-
-input[type="checkbox"]:checked + label::before {
-  background: image_url('checkbox.png') no-repeat;
-}*/
 
 .complete {
   position: absolute;
@@ -75,21 +98,6 @@ input[type="checkbox"]:checked + label::before {
     }
 }
 
-.sort-icon {
-  display: inline-block;
-  vertical-align: middle;
-  padding: 15px 10px;
-}
-
-.edit-task {
-  display: inline-block;
-  vertical-align: middle;
-  padding: 15px 10px;
-}
-.delete-task {
-  padding: 15px 10px;
-}
-
 .control-task{
   position: absolute;
   top: 50%;
@@ -100,9 +108,7 @@ input[type="checkbox"]:checked + label::before {
   padding: 1em 0;
 }
 
-.task:hover {
-  background: #FCFED5;
-}
+
 
 ul.task-list {
   padding-left: 0;
@@ -315,17 +321,6 @@ li.task {
   margin: 13px 10px;
 }
 
-/* logo */
-
-.logo {
-  padding: 0;
-  font-size: 29px;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-  text-shadow: 0 1px 0 #fff;
-  text-transform: uppercase;
-}
 
 .descriptor {
   font-size: 18px;
@@ -355,30 +350,3 @@ li.task {
   }
 }
 
-/* application */
-
-html, body {
-  background: #cc8810;
-  background: linear-gradient(to top, #b77a0e 0, #cc8810 25%, #dda931 45%, #dcd8c8 60%, #e0dcce) no-repeat center center fixed;
-  background-size: cover;
-  font-family: Arial, sans-serif;
-}
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin-bottom: 66px;
-}
-.container-app {
-  
-  width: 700px;
-  margin: 25px auto 0;
-}
-.authentication {
-
-  position: absolute;
-  right: 400px;
-  top: 200px;  
-  margin: 25px auto 0;
-}

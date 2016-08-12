@@ -13,8 +13,9 @@
 
   <div class="form-group">
     <%= f.text_field :content, class: "form-control", placeholder: "Enter task content..." %>
+    <%= f.datetime_select :deadline %>
   </div>
-
+  
   <div class="actions pull-right">
     <%= link_to 'Close', root_path , class: "btn btn-default" %>
     <%= f.submit "Save", class: "btn btn-primary" %>
