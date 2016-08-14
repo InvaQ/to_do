@@ -10,7 +10,9 @@ class ListsController < ApplicationController
     @user = current_user
     @lists = @user.lists
   end
-  
+  def edit
+    @lists = current_user.lists.find(params[:id])
+  end
 
   def update
     respond_to do |format|

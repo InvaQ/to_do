@@ -51,7 +51,7 @@ body {
 }
 .container-app {
   
-  width: 700px;
+  width: 850px;
   margin: 25px auto 0;
 }
 .authentication {
@@ -129,7 +129,7 @@ li.task p {
   padding: 16px 23px 17px;
   background: image_url('border.png') top left repeat-y;
   border-right: 1px solid #E7EBEA;
-  width: 542px;
+  width: 492px;
   text-align: justify;
   margin-left: 39px;
 }
@@ -155,7 +155,6 @@ li.task {
 
 .add-task {
   background: #ccc;
-  background: linear-gradient(-90deg, #E1E1E1 0%, #ccc 100%);
   border-left: 1px solid #aaa;
   border-bottom: 1px solid #aaa;
   border-right: 1px solid #aaa;
@@ -163,31 +162,52 @@ li.task {
   }
 
 .add-task input[type="text"] {
-  width: 535px;
+  width: 735px;
   height: 30px;
   padding: 0 0 0 13px;
   font-size: 14px;
   color: #bbb;
   background-color: #fff;
-  box-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.75);
+  box-shadow: inset 1px 1px 2px 1px rgba(0,0,0,1);
   border: 0;
   outline: none;
   }
 
 .add-task input[type="submit"] {
-  margin: 0;
-  width: 108px;
+  position: relative;
+  left: 225px;
+  margin-top: 5px;
+  margin-left: 15px;
+  width: 120px;
   height: 30px;
   cursor: pointer;
   font-size:14px;
   color: #fff;
   text-align:center;
-  text-shadow: 0 1px 0 #000;
+  text-shadow: 0 2px 0 #000;
   background: #4D8464;
-  background: linear-gradient(#96CDB0 0%,#4D8464 97%);
+  background: linear-gradient(#96CDB0 0%,#4D8464 90%);
   border: 1px solid #447557;
   border-radius: 0 5px 5px 0;
   outline: none;
+}
+.datetime {
+  position: relative;
+  cursor: pointer;
+  font-size:14px;
+  left: 30px;
+  @supports (-webkit-appearance:none) {
+      
+        display: table-row; 
+        margin-left: 30px; ;
+      
+    } 
+  
+}
+#clockdiv {  
+  display: inline-block;  
+  width: 150px;
+  text-align: justify;
 }
 
 .greenplus {

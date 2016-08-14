@@ -19,6 +19,7 @@
   <%= form_for(:task, url: tasks_path, html: { class: "add-task"}) do |f| %>
     <%= image_tag("Green.png", class: "greenplus")%>
     <%= f.text_field :content, placeholder: "Start typing here to create a task..." %>
+    <%= f.datetime_select :deadline, options = {}, html_options = { class: "datetime" } %>
     <%= f.hidden_field :list_id , value: list.id%>
     <%= f.submit "Add Task" %>
   <% end %>
@@ -57,7 +58,7 @@
       </div>
     </li>
   <% else %>
-    <li class="task" id="task_<%= task.id %>" >
+    <li class="task" id="task_<%= task.id %>" data-deadline="<%= task.deadline.to_i %>">
       <div class="complete">
         <%= link_to complete_task_path(task), method: :patch do %>
           <i class="glyphicon glyphicon-ok"></i>
@@ -67,9 +68,7 @@
       <label for=<%=task.id %> ></label>
         <p><%= task.content %></p>
         
-        <div id = "clockdiv"  
-          data-deadline = "<%= task.deadline.to_i %> ">         
-        </div>
+        <div id = "clockdiv">  </div>
         
       <div class="control-task">
         <div class="task_priority">             
@@ -82,10 +81,10 @@
             <% end %>
             </div>  
           <div class="linetwo"></div>
-          <div class="trash">
-          <%= link_to task, method: :delete do %>
+          <div class="trash" data-id="<%=task.id %>">
+          <%#= link_to task, method: :delete do %>
            <i class="glyphicon glyphicon-trash"></i>
-            <% end %>
+            <%# end %>
             </div>
       </div>
     </li>

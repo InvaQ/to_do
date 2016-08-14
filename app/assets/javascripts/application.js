@@ -40,11 +40,16 @@ $(document).ready(function() {
   });
 
   $(".trash").on('click', function(){
+    var task = $(this).parent().parent();
       $.ajax({
-        url: '/tasks/'+this.value,
+        method: 'delete',
+        url: '/tasks/' + $(this).data('id'),
         dataType: "json",
         type: 'POST',
-        data: {"_method": this.delete}
+        data: {"_method": this.delete},
+        success: function() {
+          task.hide();
+        }
       });
   });
 

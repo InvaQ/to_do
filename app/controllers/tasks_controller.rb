@@ -1,9 +1,20 @@
 class TasksController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_task
+  before_action :authenticate_user!
   before_action :set_task, except: [:create, :change_priority]
+  
+  
   def new
     @task = Task.new
   end
-
+  def edit
+    @tasks = Task.find(params[:id])
+    if @tasks.list_id == session[:list_id]
+    @tasks = Task.find(params[:id])
+  else
+    redirect_to root_path
+  end
+  end
   def index
     @tasks = Task.order("priority")
   end
@@ -19,6 +30,7 @@ class TasksController < ApplicationController
       end
     end
   end
+
   def update
     respond_to do |format|
       if @task.update(task_params)
@@ -36,7 +48,7 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   def complete
     @task.update_attribute(:completed_at, Time.now)
     redirect_to root_path, notice: "Task completed"
@@ -47,19 +59,17 @@ class TasksController < ApplicationController
    params[:task].each_with_index do |id, index|
       Task.where(id: id).update_all(priority: index+1)
     end
-    #Task.all.each_with_index do |task, i|
-     # task.update(priority: params[:task][i].to_i)
-    #end
 
     render nothing: true
   end
 
+
   private
-
-  def set_list
-    @list = List.find(params[:list_id])
+  def invalid_task
+    logger.error "attemt to access invalid task #{params[:id]}"
+    redirect_to_to root_url, notice: "Invalid task"
   end
-
+  
   def set_task
     @task = Task.find(params[:id])
   end
@@ -67,4 +77,13 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:content, :completed_at, :priority, :list_id, :deadline)
   end
+
+  def correct_user
+    if (@user ==! current_user)
+      redirect_to root_url
+    else
+      @tasks = Task.find(params[:id])
+       end 
+    end
+
 end
