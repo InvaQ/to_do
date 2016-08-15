@@ -190,6 +190,11 @@ li.task {
   border: 1px solid #447557;
   border-radius: 0 5px 5px 0;
   outline: none;
+  @supports (-webkit-appearance:none) {
+      
+        left: 170px;
+      
+    }
 }
 .datetime {
   position: relative;
@@ -250,6 +255,8 @@ li.task {
 /* lists*/
 
 .edit-list {
+  position: relative;
+  right: -150px;
   display: none;
   vertical-align: middle;
 
@@ -272,7 +279,7 @@ li.task {
   margin: 13px 0;
 }
 
-.line {
+.delete-list {
   vertical-align: middle;
   display: inline-block;
   border-right: 1px solid #5284BF;

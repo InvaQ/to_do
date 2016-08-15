@@ -53,4 +53,19 @@ $(document).ready(function() {
       });
   });
 
+  $(".add-task").submit(function(data){
+    var formData = $(".add-task").serialize();
+    $.ajax({
+        method: 'POST',
+        url: '/tasks',
+        dataType: "json",
+        type: 'POST',
+        data: formData,
+        success: function(data) {
+
+          $(".task-list").append(data['html'])
+        }
+    });
+  });
+
 });

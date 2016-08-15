@@ -1,0 +1,66 @@
+<% @lists.each do |list| %>
+    <% list.tasks.each do |task| %>
+      <% if task.completed? %>
+        <li class="task" id="task_<%= task.id %>" >
+          <div class="complete">
+          
+            <i style="color: #006400;" class="glyphicon glyphicon-ok"></i>
+          
+        </div>
+      
+          <label for=<%=task.id %> ></label>
+            <p style="opacity: 0.5;"><strike><%= task.content %></strike></p>
+          
+          <div class="control-task">
+          <div class="task_priority">
+          
+            <span class="glyphicon glyphicon-sort"></span>
+            </div> 
+            <div class="linetwo"></div>
+            <div class="task_edit">      
+            <%= link_to edit_task_path(task) do %>
+             <i class="glyphicon glyphicon-pencil"></i>
+              <% end %>
+              </div>  
+            <div class="linetwo"></div>
+            <div class="trash" data-id="<%=task.id %>">
+            <%#= link_to task, method: :delete do %>
+             <i class="glyphicon glyphicon-trash"></i>
+              <% #end %>
+              </div>
+          </div>
+        </li>
+      <% else %>
+        <li class="task" id="task_<%= task.id %>" data-deadline="<%= task.deadline.to_i %>">
+          <div class="complete">
+            <%= link_to complete_task_path(task), method: :patch do %>
+              <i class="glyphicon glyphicon-ok"></i>
+            <% end %>
+          </div>
+      
+          <label for=<%=task.id %> ></label>
+            <p><%= task.content %></p>
+            
+            <div id = "clockdiv">  </div>
+            
+          <div class="control-task">
+            <div class="task_priority">             
+              <span class="glyphicon glyphicon-sort"></span>
+              </div> 
+              <div class="linetwo"></div>
+              <div class="task_edit">      
+              <%= link_to edit_task_path(task) do %>
+               <i class="glyphicon glyphicon-pencil"></i>
+                <% end %>
+                </div>  
+              <div class="linetwo"></div>
+              <div class="trash" data-id="<%=task.id %>">
+              <%#= link_to task, method: :delete do %>
+               <i class="glyphicon glyphicon-trash"></i>
+                <%# end %>
+                </div>
+          </div>
+          </li>
+      <%end%>
+    <%end%>
+<%end%>

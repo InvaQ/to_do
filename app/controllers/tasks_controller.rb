@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :invalid_task
   before_action :authenticate_user!
   before_action :set_task, except: [:create, :change_priority]
   
@@ -8,10 +7,9 @@ class TasksController < ApplicationController
     @task = Task.new
   end
   def edit
-    @tasks = Task.find(params[:id])
-    redirect_to root_path unless @tasks.id == current_user.id
-   rescue ActiveRecordNotFound
-    redirect_to root_path
+    
+    @task = Task.find(params[:id])
+    redirect_to root_path unless current_user && (@task.list.user_id == current_user.id)
   end
   def index
     @tasks = Task.order("priority")
@@ -19,9 +17,11 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    a =render(partial: 'tasks', collection: @task)
     respond_to do |format|
-      if @task.save
+      if @task.save        
         format.html { redirect_to root_path}
+        format.json {a}
       else
       flash[:error] = 'Content can not be blank or Content is to long (maximim is 60 characters)'
         format.html { redirect_to root_path }
@@ -63,11 +63,7 @@ class TasksController < ApplicationController
 
 
   private
-  def invalid_task
-    logger.error "attemt to access invalid task #{params[:id]}"
-    redirect_to root_url, notice: "Invalid task"
-  end
-  
+    
   def set_task
     @task = Task.find(params[:id])
   end
