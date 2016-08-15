@@ -9,11 +9,9 @@ class TasksController < ApplicationController
   end
   def edit
     @tasks = Task.find(params[:id])
-    if @tasks.list_id == session[:list_id]
-    @tasks = Task.find(params[:id])
-  else
+    redirect_to root_path unless @tasks.id == current_user.id
+   rescue ActiveRecordNotFound
     redirect_to root_path
-  end
   end
   def index
     @tasks = Task.order("priority")
@@ -67,7 +65,7 @@ class TasksController < ApplicationController
   private
   def invalid_task
     logger.error "attemt to access invalid task #{params[:id]}"
-    redirect_to_to root_url, notice: "Invalid task"
+    redirect_to root_url, notice: "Invalid task"
   end
   
   def set_task
