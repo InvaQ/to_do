@@ -1,4 +1,5 @@
 <% @lists.each do |list| %>
+ <ul id="list<%=list.id%>" class="task-list">
     <% list.tasks.each do |task| %>
       <% if task.completed? %>
         <li class="task" id="task_<%= task.id %>" >
@@ -63,4 +64,5 @@
           </li>
       <%end%>
     <%end%>
+    </ul>
 <%end%>
