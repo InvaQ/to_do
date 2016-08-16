@@ -1,4 +1,4 @@
-
+Heroku: https://garage-todo.herokuapp.com/
 SQL task
 ..................................................................................
 
@@ -44,3 +44,4 @@ ________________________________________________________________________________
     RIGHT JOIN tasks ON projects.id = tasks.project_id 
     WHERE tasks.status = 'completed' 
     GROUP BY projects.name HAVING count > 10 ORDER BY projects.id;
+Ivan Kudlatov
