@@ -8,7 +8,7 @@ Given tables:
 
 
 1. get all statuses, not repeating, alphabetically ordered
-1. SELECT DISTINCT STATUS FROM TASKS ORDER BY STATUS;
+1. SELECT DISTINCT status FROM TASKS ORDER BY status;
 ___________________________________________________________________________________
 2. get the count of all tasks in each project, order by tasks count descending
 2. SELECT projects.id, COUNT(tasks) AS amount FROM tasks RIGHT JOIN projects
