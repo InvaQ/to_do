@@ -24,7 +24,7 @@ $edit: #337ab7;
 
 
 
-/* application */
+/* application*/
 
 html, body {
   background: #cc8810;
@@ -73,7 +73,7 @@ body {
 }
 
 
-/* Errors */
+/* error */
 
 .alert-my {
   color: #a94442;
@@ -152,7 +152,6 @@ li.task {
   cursor: move;
 }
 
-/* Task Add*/
 
 .add-task {
   background: #ccc;
@@ -220,7 +219,6 @@ li.task {
   margin-right: 5px;
 }
 
-/* Button */
 
 .add-button {
   padding: 10px;
@@ -360,7 +358,7 @@ li.task {
 }
 
 
-/* Footer */
+/* footer */
 
 .footer {
   position: absolute;
@@ -374,7 +372,7 @@ li.task {
     color: #fff;
   }
   a:hover {
-    color: #fff;
+    color: #d8d8d8;
   }
 }
 
