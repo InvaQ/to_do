@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   def invalid_request
     logger.error "attemt to access invalid page #{params[:id]}"
-    redirect_to root_url, notice: "Invalid page"
+    redirect_to root_url, notice: "Invalid page!"
   end
 end

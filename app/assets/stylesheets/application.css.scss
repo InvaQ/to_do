@@ -127,8 +127,9 @@ li.task p {
 .task p {
   display: inline-block;
   padding: 16px 23px 17px;
-  background: image_url('border.png') top left repeat-y;
+  
   border-right: 1px solid #E7EBEA;
+  border-left: 2px solid #E7EBEA;
   width: 492px;
   text-align: justify;
   margin-left: 39px;

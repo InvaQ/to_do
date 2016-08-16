@@ -53,7 +53,7 @@ $(document).ready(function() {
       });
   });
 
-  $(".add-task").submit(function(data){
+  /*$(".add-task").submit(function(data){
     var formData = $(".add-task").serialize();
     $.ajax({
         method: 'POST',
@@ -63,9 +63,9 @@ $(document).ready(function() {
         data: formData,
         success: function(data) {
 
-          $(".task-list").append(data['html'])
+          $(".task-list").html(data)
         }
     });
-  });
+  });*/
 
 });

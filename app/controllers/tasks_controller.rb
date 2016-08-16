@@ -17,11 +17,11 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    a =render(partial: 'tasks', collection: @task)
+    #a =render(partial: 'tasks', collection: @task)
     respond_to do |format|
       if @task.save        
         format.html { redirect_to root_path}
-        format.json {a}
+       # format.json {a}
       else
       flash[:error] = 'Content can not be blank or Content is to long (maximim is 60 characters)'
         format.html { redirect_to root_path }

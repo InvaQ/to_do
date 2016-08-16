@@ -16,7 +16,7 @@
     </div>
   
   </div>
-  <%= form_for(:task, url: tasks_path, remote: true, html: { class: "add-task"}) do |f| %>
+  <%= form_for(:task, url: tasks_path, html: { class: "add-task"}) do |f| %>
     <%= image_tag("Green.png", class: "greenplus")%>
     <%= f.text_field :content, placeholder: "Start typing here to create a task...", class: 'new_task_content' %>
     <%= f.datetime_select :deadline, options = {}, html_options = { class: "datetime" } %>
