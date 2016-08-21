@@ -53,6 +53,25 @@ $(document).ready(function() {
       });
   });
 
+  $(".complete").on('click', function(){
+    var deadline = $('#clockdiv');
+    var task = $('.task_edit');
+    var target = $(this).parent();
+      $.ajax({
+        url: '/tasks/' + $(this).data('id-complete') + '/complete',        
+        type: 'PATCH',
+        data: {"complete_at": this.complete},
+        success: function() {
+
+            target.css( "background-color", "#c7c7c7" );
+            task.hide();
+             deadline.hide();   
+
+        
+        }
+      });
+  });
+
   /*$(".add-task").submit(function(data){
     var formData = $(".add-task").serialize();
     $.ajax({

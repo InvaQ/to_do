@@ -48,8 +48,11 @@ class TasksController < ApplicationController
   end
   
   def complete
-    @task.update_attribute(:completed_at, Time.now)
-    redirect_to root_path, notice: "Task completed"
+    @task.update_attributes(completed_at: Time.now)
+    respond_to do |format|
+      #format.html { redirect_to root_path, notice: "Task completed" }
+      format.json { head :no_content }
+    end
   end
 
   def change_priority
