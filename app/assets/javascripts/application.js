@@ -65,9 +65,7 @@ $(document).ready(function() {
 
             target.css( "background-color", "#c7c7c7" );
             task.hide();
-             deadline.hide();   
-
-        
+             deadline.hide();        
         }
       });
   });
