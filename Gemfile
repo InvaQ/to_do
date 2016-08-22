@@ -23,6 +23,12 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'shoulda-matchers', '2.5.0'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'rb-inotify'
   
 end
 

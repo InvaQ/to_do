@@ -9,10 +9,10 @@
     </div>
 
     <div class="edit-list">
-      <%= link_to "#{image_tag("edit_img.png", class: "link-list")}".html_safe, edit_list_path(list) %>
+      <%= link_to(image_tag("edit_img.png", class: "link-list", id: "edit-#{list.id}"),edit_list_path(list)) %>
 
       <div class="delete-list"></div>
-      <%= link_to "#{image_tag("delete_img.png", class: "link-list")}".html_safe, list, method: :delete %>
+      <%= link_to(image_tag("delete_img.png", id: "delete-#{list.id}", class: "link-del"), list, method: :delete) %>
     </div>
   
   </div>
